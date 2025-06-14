@@ -2,21 +2,30 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .app {
+  width: 100px;
   max-width: 600 px;
   margin: 50px auto;
   padding: 30px;
-  background: white;
+  background: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
+  border-radius: 20px;
+  animation: fadeIn 0.5s ease;
 }
 
 h1 {
   text-align: center;
   color: #2563eb;
   margin-bottom: 10px;
+  font-size: 2rem;
 }
 
 .compteur {
@@ -33,15 +42,16 @@ h1 {
   margin-bottom: 20px;
 }
 
-input {
+input[type='texte'] {
   padding: 12px;
   font-size: 16px;
   border: 2px solid #cbd5e1;
   border-radius: 8px;
   transition: border 0.3s;
+  box-shadow: 0.3s;
 }
 
-input:focus {
+input[type='texte']:focus {
   border-color: #2563eb;
   outline: none;
 }
@@ -52,12 +62,15 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
+  transform: 0.2s;
 }
 
 button:hover {
   background: #1d4ed8;
+  transform: scale(1.03);
 }
 
 .filtres {
@@ -89,17 +102,22 @@ button:hover {
   align-items: center;
   padding: 14px;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #f8fafc;
   transition: background 0.3s;
+  transform: 0.3s;
+  opacity: 0.3s;
+  animation: slideIn 0.3s ease;
 }
 
 .tache:hover {
   background: #eff6ff;
+  transform: scale(1.01);
 }
 
 .tache span {
   cursor: pointer;
+  transition: color 0.3s;
 }
 
 .tache.fait span {
@@ -108,3 +126,38 @@ button:hover {
   font-style: italic;
 }
 
+@media (max-width: 600px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .filtres {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
